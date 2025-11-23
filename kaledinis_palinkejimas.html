@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🎄 Kalėdinis palinkėjimas 🎄</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(to bottom right, #d9f6ff, #b2ebf2, #004d60);
+      overflow: hidden;
+      color: #004d40;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 26px 22px;
+      border-radius: 22px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      max-width: 480px;
+      width: 90%;
+      animation: fadeIn 1s ease-in;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #00796b;
+    }
+
+    #text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 20px 0 14px;
+      line-height: 1.5em;
+    }
+
+    .footer {
+      font-size: 0.9rem;
+      color: #00695c;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .sound-hint {
+      font-size: 0.85rem;
+      color: #004d40;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+
+    .decor {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      animation: twinkle 2s infinite ease-in-out alternate;
+    }
+
+    .tree {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 80px solid transparent;
+      border-right: 80px solid transparent;
+      border-bottom: 140px solid #0d692f;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.4));
+    }
+
+    .trunk {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 25px;
+      height: 30px;
+      background: #7a4b1b;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.5; transform: rotate(0deg); }
+      100% { opacity: 1; transform: rotate(10deg); }
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #ffffff;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      pointer-events: none;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh); }
+      100% { transform: translateY(110vh); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .audio-wrap {
+      margin-top: 8px;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 260px;
+    }
+  </style>
+</head>
+<body>
+  <div class="decor">⭐</div>
+
+  <div class="card">
+    <h1>🎄 Kalėdinis palinkėjimas 🎄</h1>
+    <div id="text"></div>
+    <div class="footer">Su šilčiausiais sveikinimais ir šviesiomis mintimis 💖</div>
+    <div class="sound-hint">Jei nori, įsijunk švelnius Kalėdų varpelius 👇</div>
+    <div class="audio-wrap">
+      <audio controls loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/15/audio_81bcdfe7cb.mp3?filename=soft-christmas-bells-12602.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <div class="tree"></div>
+  <div class="trunk"></div>
+
+  <script>
+    const linkejimai = [
+      "Tegul šios Kalėdos atneša šviesos į tavo dienas ir ramybės į širdį ✨",
+      "Tegul žiemos šaltis primena, kaip gera būti šalia šiltų žmonių ❄️",
+      "Linkiu džiaugsmo, kuris niekada neišsenka, ir šypsenos, kuri niekada neišblėsta 💫",
+      "Tegul Kalėdų rytas pradžiugina paprastais, bet tikrais stebuklais 🎁",
+      "Tegul artumo šiluma užpildo tavo namus ir širdį 🕯️",
+      "Linkiu, kad kiekviena diena būtų kupina dėkingumo ir mažų dovanų iš gyvenimo 💖",
+      "Tegul švenčių ramybė suteikia jėgų ir įkvėpimo naujiems metams 🌟",
+      "Tegul šviesa tavo languose primena – niekada nesi vienas 🏠",
+      "Linkiu šiltos arbatos, tylaus vakaro ir mylimų žmonių aplink 🍵",
+      "Tegul Kalėdos primena, kad dovanoti šypseną – didžiausias stebuklas 🎅",
+      "Tegul tavo širdis būna atvira, o dienos – kupinos prasmės 💚",
+      "Linkiu lengvumo, gerumo ir nuoširdaus juoko visus metus 😊",
+      "Tegul šios Kalėdos sustabdo laiką ir leidžia pajusti ramybę 🌌",
+      "Tegul tavo pasaulis suspindi šviesomis, meile ir džiaugsmu 💫",
+      "Linkiu švelnumo kiekvienoje akimirkoje ir širdies, kupinos dėkingumo 🌷",
+      "Tegul stebuklas užsuka ir į tavo namus – tyliai, bet nuoširdžiai ✨",
+      "Linkiu tau šilumos, ramybės ir tikėjimo šviesesne diena 🌤️",
+      "Tegul šventės būna tokios, kokių reikia tavo sielai 🎄",
+      "Linkiu atrasti džiaugsmą paprastuose dalykuose 🌸",
+      "Tegul šių švenčių šviesa tave lydi visus metus 🔔",
+      "Linkiu, kad tavo širdis būtų lengva kaip snaigė, bet stipri kaip eglė ❄️",
+      "Tegul kiekvienas rytas primena, kad gyvenimas – dovana 🎁",
+      "Linkiu ramybės, sveikatos ir laiko sau 🕯️",
+      "Tegul Kalėdų dvasia išlieka tavo širdyje visus metus 🌠",
+      "Linkiu šviesos, džiaugsmo ir šilumos tau ir visiems, kuriuos myli ❤️"
+    ];
+
+    const textEl = document.getElementById("text");
+    const atsitiktinis = linkejimai[Math.floor(Math.random() * linkejimai.length)];
+    textEl.textContent = atsitiktinis;
+
+    function kurkSnaiges(kiek) {
+      for (let i = 0; i < kiek; i++) {
+        const span = document.createElement("span");
+        span.className = "snowflake";
+        span.textContent = "❄";
+        const left = Math.random() * 100;
+        const delay = Math.random() * 10;
+        const trukme = 8 + Math.random() * 10;
+        const dydis = 0.7 + Math.random() * 0.8;
+        span.style.left = left + "vw";
+        span.style.fontSize = dydis + "rem";
+        span.style.animationDuration = trukme + "s";
+        span.style.animationDelay = delay + "s";
+        document.body.appendChild(span);
+      }
+    }
+
+    kurkSnaiges(50);
+  </script>
+</body>
+</html>

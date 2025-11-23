@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🎄 Kalėdinis palinkėjimas 🎄</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(to bottom right, #d9f6ff, #b2ebf2, #004d60);
+      overflow: hidden;
+      color: #004d40;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 26px 22px;
+      border-radius: 22px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      max-width: 480px;
+      width: 90%;
+      animation: fadeIn 1s ease-in;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #00796b;
+    }
+
+    #text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 20px 0 14px;
+      line-height: 1.5em;
+    }
+
+    .footer {
+      font-size: 0.9rem;
+      color: #00695c;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .decor {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      animation: twinkle 2s infinite ease-in-out alternate;
+    }
+
+    .tree {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 80px solid transparent;
+      border-right: 80px solid transparent;
+      border-bottom: 140px solid #0d692f;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.4));
+    }
+
+    .trunk {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 25px;
+      height: 30px;
+      background: #7a4b1b;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.5; transform: rotate(0deg); }
+      100% { opacity: 1; transform: rotate(10deg); }
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #ffffff;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      pointer-events: none;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh); }
+      100% { transform: translateY(110vh); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    audio {
+      margin-top: 12px;
+      width: 100%;
+      max-width: 260px;
+    }
+  </style>
+</head>
+<body>
+  <div class="decor">⭐</div>
+
+  <div class="card">
+    <h1>🎄 Kalėdinis palinkėjimas 🎄</h1>
+    <div id="text"></div>
+    <div class="footer">Su šilčiausiais sveikinimais ir šviesiomis mintimis 💖</div>
+
+    <!-- tavo daina -->
+    <audio controls autoplay loop>
+      <source src="Snow in My Shoes.mp3" type="audio/mpeg">
+      Jūsų naršyklė nepalaiko garso grotuvų.
+    </audio>
+  </div>
+
+  <div class="tree"></div>
+  <div class="trunk"></div>
+
+  <script>
+    const linkejimai = [
+      "Tegul Kalėdų rytas atneša šviesos ir džiaugsmo 🌅",
+      "Linkiu šilumos tavo širdyje ir šviesos tavo dienose ✨",
+      "Tegul šventės būna ramios, jaukios ir šiltos 🕯️",
+      "Būk ramus kaip snaigė ir lengvas kaip vėjas ❄️",
+      "Tegul šypsena šildo net šalčiausią dieną 😊",
+      "Linkiu stebuklo – net ir mažo, bet tikro 🎁",
+      "Tegul tavo namai kvepia Kalėdomis ir džiaugsmu 🍪",
+      "Tegul širdyje visada dega šviesa 🌟",
+      "Linkiu tau švelnumo, jaukumo ir vidinės ramybės 💖",
+      "Tegul Kalėdos apgaubia tave meile 🎄",
+      "Linkiu sveikatos, stiprybės ir gerumo 🌿",
+      "Tegul nauji metai atneša naujų šypsenų 🌞",
+      "Linkiu tikėjimo, kad viskas bus gerai 🌠",
+      "Tegul tavo dienos būna pilnos dėkingumo 🌼",
+      "Linkiu šviesos tavo mintims ir ramybės širdžiai 💫",
+      "Tegul gyvenimas būna saldus kaip imbierinis sausainis 🍪",
+      "Tegul džiaugsmas skamba kaip Kalėdų varpeliai 🔔",
+      "Linkiu šypsenos, net kai sninga ⛄",
+      "Tegul šventės būna kupinos šviesos ir meilės 🕊️",
+      "Linkiu tau mažų stebuklų kiekvieną dieną ✨",
+      "Tegul tavo širdis būna lengva kaip snaigė ❄️",
+      "Linkiu šiltų apkabinimų ir gerų žmonių šalia 🤗",
+      "Tegul meilė visada randa kelią į tavo širdį ❤️",
+      "Linkiu, kad kiekvienas rytas būtų nauja pradžia 🌅",
+      "Tegul ramybė būna tavo didžiausia dovana 🎁",
+      "Linkiu, kad šviesa niekada neišblėstų tavo languose 🕯️",
+      "Tegul šios Kalėdos primena – pasaulis gražus 💫",
+      "Linkiu, kad gyvenimas tave mylėtų taip, kaip tu myli kitus 💕",
+      "Tegul kiekviena diena neša šypseną 🎈",
+      "Linkiu šviesaus, raminančio vakaro 🌙",
+      "Tegul tavo širdis būna pilna džiaugsmo 🎄",
+      "Linkiu šilumos, meilės ir jaukumo visiems tavo artimiems 💖",
+      "Tegul Kalėdos palieka šviesą visiems metams 🌠"
+    ];
+
+    const textEl = document.getElementById("text");
+    const atsitiktinis = linkejimai[Math.floor(Math.random() * linkejimai.length)];
+    textEl.textContent = atsitiktinis;
+
+    function kurkSnaiges(kiek) {
+      for (let i = 0; i < kiek; i++) {
+        const span = document.createElement("span");
+        span.className = "snowflake";
+        span.textContent = "❄";
+        const left = Math.random() * 100;
+        const delay = Math.random() * 10;
+        const trukme = 8 + Math.random() * 10;
+        const dydis = 0.7 + Math.random() * 0.8;
+        span.style.left = left + "vw";
+        span.style.fontSize = dydis + "rem";
+        span.style.animationDuration = trukme + "s";
+        span.style.animationDelay = delay + "s";
+        document.body.appendChild(span);
+      }
+    }
+
+    kurkSnaiges(50);
+  </script>
+</body>
+</html>
